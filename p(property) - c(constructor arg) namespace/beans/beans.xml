@@ -1,36 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
 
 	<bean id="patient_bean" class="com.abir.Hospital.Patient" scope="singleton"
-		init-method="onCreate" destroy-method="onDestroy" factory-method="getInstance">
-		<constructor-arg value="25" name="id"></constructor-arg>
-		<constructor-arg value="abir reza" name="name"></constructor-arg>
+		init-method="onCreate" destroy-method="onDestroy" factory-method="getInstance"
+		c:id="26" c:name="abir reza" p:nationalId="37111" p:address-ref="address_bean">
 
-		<property name="nationalId">
-			<value>1245</value>
-		</property>
-		<property name="address" ref="address_bean"></property>
 	</bean>
 
 	<bean id="patient_bean2" class="com.abir.Hospital.Patient" scope="singleton"
 		init-method="onCreate" destroy-method="onDestroy" factory-bean="patientFactory_bean"
-		factory-method="createPatient" p:address-ref="address_bean2">
-		<constructor-arg value="44" name="id"></constructor-arg>
-		<constructor-arg value="jahir pagol" name="name"></constructor-arg>
+		factory-method="createPatient" p:nationalId="199439" p:address-ref="address_bean2"
+		c:id="12" c:name="jahir hasan">
 
-		<property name="nationalId">
-			<value>1200</value>
-		</property>
-		
 	</bean>
 
-	<bean id="address_bean" class="com.abir.Hospital.Address">
-		<constructor-arg name="street" value="konapara"></constructor-arg>
-		<constructor-arg name="postCode" value="1362"></constructor-arg>
+	<bean id="address_bean" class="com.abir.Hospital.Address"
+		p:street="konapara" p:postCode="1399">
+
 	</bean>
 
 	<bean id="address_bean2" class="com.abir.Hospital.Address"
