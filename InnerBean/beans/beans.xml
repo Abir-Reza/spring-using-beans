@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+
+	<bean id="patient_bean" class="com.abir.Hospital.Patient" c:id="1208048" c:name="cse">
+		<property name="emergencyContact">
+			<list>
+				<bean class="com.abir.Hospital.EmergencyContact" >
+				  
+					<property name="name" value="List inner bean"></property>
+					<property name="phoneNumber" value="01791728336"></property>
+				</bean>
+				<ref bean="contact1" />
+				<ref bean="contact2" />
+				
+			</list>
+		</property>
+
+		<property name="innerBean">
+			<bean class="com.abir.Hospital.EmergencyContact">
+				<property name="name" value="Inner bean name"></property>
+				<property name="phoneNumber" value="01091728336"></property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="contact1" class="com.abir.Hospital.EmergencyContact">
+		<property name="name" value="abir"></property>
+		<property name="phoneNumber" value="01791728336"></property>
+	</bean>
+	<bean id="contact2" class="com.abir.Hospital.EmergencyContact">
+		<property name="name" value="anon"></property>
+		<property name="phoneNumber" value="01791728337"></property>
+	</bean>
+	
+</beans>
+ 
